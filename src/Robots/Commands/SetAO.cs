@@ -27,6 +27,7 @@ public class SetAO(int ao, double value, bool runBefore = false) : Command(runBe
         _commands.Add(Manufacturers.Doosan, CodeDoosan);
         _commands.Add(Manufacturers.Fanuc, CodeFanuc);
         _commands.Add(Manufacturers.Jaka, CodeJaka);
+        _commands.Add(Manufacturers.Yaskawa, CodeYaskawa);
 
         _declarations.Add(Manufacturers.ABB, DeclarationAbb);
         _declarations.Add(Manufacturers.KUKA, DeclarationKuka);
@@ -112,6 +113,12 @@ public class SetAO(int ao, double value, bool runBefore = false) : Command(runBe
     {
         var number = GetNumber(robotSystem);
         return $":AO[{number}]={Value} ;";
+    }
+
+    string CodeYaskawa(RobotSystem robotSystem, Target target)
+    {
+        var number = GetNumber(robotSystem);
+        return $"AOUT AO#({number}) {Value:0.###}";
     }
 
     string GetNumber(RobotSystem robotSystem)

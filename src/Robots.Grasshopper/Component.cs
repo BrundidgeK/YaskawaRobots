@@ -13,7 +13,7 @@ public abstract class Component(
     string subcategory,
     string id,
     GH_Exposure exposure = GH_Exposure.primary)
-    : GH_Component(name, nickname, description, "Robots", subcategory)
+    : GH_Component(name, nickname, description, "Robots V2", subcategory)
 {
     protected Component(
         string name,

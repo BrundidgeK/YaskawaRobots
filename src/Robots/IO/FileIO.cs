@@ -137,7 +137,7 @@ public static class FileIO
         var controller = element.GetStringOrDefault("controller");
 
         if (!Enum.TryParse<Manufacturers>(manufacturerName, out var manufacturer))
-            throw new ArgumentException($"Manufacturer '{manufacturerName}' is invalid.");
+            throw new ArgumentException($"'{manufacturerName}' is invalid");
 
         var meshDoc = loadMeshes
             ? GetRhinoDoc(libraryFile.NotNull("Robot systems loaded with meshes must come from a library file."))
@@ -164,6 +164,7 @@ public static class FileIO
             Manufacturers.Fanuc => new SystemFanuc(attributes, mechanicalGroups),
             Manufacturers.Igus => new SystemIgus(attributes, mechanicalGroups),
             Manufacturers.Jaka => new SystemJaka(attributes, mechanicalGroups),
+            Manufacturers.Yaskawa => new SystemYaskawa(attributes, mechanicalGroups),
             Manufacturers.All => throw new ArgumentException("Manufacturer 'All' is not valid for a robot system."),
             _ => throw Unsupported(manufacturer)
         };
@@ -253,6 +254,7 @@ public static class FileIO
                 Manufacturers.Fanuc => new RobotFanuc(model, payload, basePlane, baseMesh, joints),
                 Manufacturers.Igus => new RobotIgus(model, payload, basePlane, baseMesh, joints),
                 Manufacturers.Jaka => new RobotJaka(model, payload, basePlane, baseMesh, joints),
+                Manufacturers.Yaskawa => new RobotYaskawa(model, payload, basePlane, baseMesh, joints),
                 Manufacturers.All => throw new ArgumentException("Manufacturer 'All' is not valid for a robot arm."),
                 _ => throw Unsupported(manufacturer),
             },

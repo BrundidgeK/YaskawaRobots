@@ -27,6 +27,14 @@ public class WaitDI(int di, bool value = true, bool runBefore = false) : Command
         _commands.Add(Manufacturers.Doosan, CodeDoosan);
         _commands.Add(Manufacturers.Fanuc, CodeFanuc);
         _commands.Add(Manufacturers.Jaka, CodeJaka);
+        _commands.Add(Manufacturers.Yaskawa, CodeYaskawa);
+    }
+
+    private string CodeYaskawa(RobotSystem robotSystem, Target target)
+    {
+        var number = GetNumber(robotSystem);
+        string textValue = Value ? "ON" : "OFF";
+        return $"WAIT IN#({number})={textValue}";
     }
 
     string CodeAbb(RobotSystem robotSystem, Target target)

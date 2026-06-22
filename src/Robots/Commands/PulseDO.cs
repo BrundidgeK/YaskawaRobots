@@ -27,6 +27,7 @@ public class PulseDO(int @do, double length = 0.2, bool runBefore = false) : Com
         _commands.Add(Manufacturers.Doosan, CodeDoosan);
         _commands.Add(Manufacturers.Fanuc, CodeFanuc);
         _commands.Add(Manufacturers.Igus, CodeIgus);
+        _commands.Add(Manufacturers.Yaskawa, CodeYaskawa);
 
         _declarations.Add(Manufacturers.UR, DeclarationUR);
     }
@@ -84,6 +85,12 @@ public class PulseDO(int @do, double length = 0.2, bool runBefore = false) : Com
         return $"<Output Channel=\"{number}\" State=\"True\" /> \r\n" +
             $"<Wait Type=\"Time\" Seconds=\"{_length:0.###}\"  /> \r\n  " +
             $"<Output Channel=\"{number}\" State=\"False\"/>";
+    }
+
+    string CodeYaskawa(RobotSystem robotSystem, Target target)
+    {
+        var number = GetNumber(robotSystem);
+        return $"PULSE OT#({number}) T={_length:0.###}";
     }
 
     string GetNumber(RobotSystem robotSystem)

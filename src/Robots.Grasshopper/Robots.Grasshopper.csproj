@@ -37,9 +37,9 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="Rename" AfterTargets="AfterBuild" Condition="'$(ContinuePackingAfterGeneratingNuspec)' != 'true'">
-    <Move SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)$(Product).gha" />
-  </Target>
+<Target Name="Rename" AfterTargets="AfterBuild" Condition="'$(ContinuePackingAfterGeneratingNuspec)' != 'true'">
+  <Move SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)RobotsV2.gha" />
+</Target>
 
   <Target Name="PublishAbbRemoteHelper" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' and '$(ContinuePackingAfterGeneratingNuspec)' != 'true'">
     <RemoveDir Directories="$(TargetDir)abb-remote\" />

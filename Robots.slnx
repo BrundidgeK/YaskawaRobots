@@ -1,4 +1,9 @@
 <Solution>
+
+  <PropertyGroup>
+  <AssemblyName>RobotsV2</AssemblyName>
+</PropertyGroup>
+
   <Project Path="build\Robots.Build\Robots.Build.csproj" />
   <Project Path="src\Robots.AbbRemote\Robots.AbbRemote.csproj" />
   <Project Path="src\Robots.Grasshopper\Robots.Grasshopper.csproj">

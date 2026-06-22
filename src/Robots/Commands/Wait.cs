@@ -15,6 +15,7 @@ public class Wait(double seconds, bool runBefore = false) : Command(runBefore: r
         _commands.Add(Manufacturers.Fanuc, CodeFanuc);
         _commands.Add(Manufacturers.Igus, CodeIgus);
         _commands.Add(Manufacturers.Jaka, CodeJaka);
+        _commands.Add(Manufacturers.Yaskawa, CodeYaskawa);
 
         _declarations.Add(Manufacturers.ABB, DeclarationAbb);
         _declarations.Add(Manufacturers.KUKA, DeclarationKuka);
@@ -22,6 +23,11 @@ public class Wait(double seconds, bool runBefore = false) : Command(runBefore: r
         _declarations.Add(Manufacturers.Staubli, DeclarationStaubli);
         _declarations.Add(Manufacturers.FrankaEmika, DeclarationPython);
         _declarations.Add(Manufacturers.Doosan, DeclarationPython);
+    }
+
+    private string CodeYaskawa(RobotSystem system, Target target)
+    {
+        return $"TIMER T={Seconds:0.##}";
     }
 
     string DeclarationAbb(RobotSystem robotSystem)

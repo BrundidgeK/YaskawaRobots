@@ -8,7 +8,8 @@ public interface IPostProcessor
     List<List<List<string>>> GetCode(RobotSystem system, Program program);
 }
 
-public enum Manufacturers { ABB, KUKA, UR, Staubli, FrankaEmika, Doosan, Fanuc, Igus, Jaka, All };
+// TODO: Add necessary properties for INFORM language
+public enum Manufacturers { ABB, KUKA, UR, Staubli, FrankaEmika, Doosan, Fanuc, Igus, Jaka, Yaskawa, All };
 
 public record DefaultPose(Plane[][] Planes, Mesh[][] Meshes);
 record SystemAttributes(string Name, string? Controller, IO IO, Plane BasePlane, IPostProcessor? PostProcessor);

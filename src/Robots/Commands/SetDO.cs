@@ -28,6 +28,12 @@ public class SetDO(int @do, bool value, bool runBefore = false) : Command(runBef
         _commands.Add(Manufacturers.Fanuc, CodeFanuc);
         _commands.Add(Manufacturers.Igus, CodeIgus);
         _commands.Add(Manufacturers.Jaka, CodeJaka);
+        _commands.Add(Manufacturers.Yaskawa, CodeYaskawa);
+    }
+
+    string CodeYaskawa(RobotSystem system, Target target)
+    {
+        return $"DOUT DO#({DO}) {(Value ? "ON" : "OFF")}";
     }
 
     string CodeAbb(RobotSystem robotSystem, Target target)

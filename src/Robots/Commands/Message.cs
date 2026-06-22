@@ -15,6 +15,7 @@ public class Message(string message, bool runBefore = false) : Command(runBefore
         _commands.Add(Manufacturers.Fanuc, (_, _) => $":MESSAGE[\"{EscapeFanuc(_message)}\"] ;");
         _commands.Add(Manufacturers.Igus, (_, _) => $"<Comment Descr=\"{EscapeXml(_message)}\" />");
         _commands.Add(Manufacturers.Jaka, (_, _) => $"print({Quote(_message)})");
+        _commands.Add(Manufacturers.Yaskawa, (_, _) => $"MSG \"{OneLine(_message)}\"");
     }
 
     public override string ToString() => $"Command (Message \"{_message}\")";

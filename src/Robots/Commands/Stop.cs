@@ -14,6 +14,7 @@ public class Stop(bool runBefore = false) : Command(runBefore: runBefore)
         _commands.Add(Manufacturers.Fanuc, (_, _) => ":ABORT ;");
         _commands.Add(Manufacturers.Igus, (_, _) => "<Stop  Descr=\"\" />");
         _commands.Add(Manufacturers.Jaka, (_, _) => "pause()");
+        _commands.Add(Manufacturers.Yaskawa, (_, _) => "ABORT");
     }
 
     public override string ToString() => "Command (Stop)";
